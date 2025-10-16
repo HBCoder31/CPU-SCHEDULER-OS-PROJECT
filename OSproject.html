@@ -426,7 +426,6 @@
         let selectedAlgorithm = 'FCFS';
         let processCount = 3;
 
-        // Algorithm selector
         document.querySelectorAll('.algorithm-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.algorithm-btn').forEach(b => b.classList.remove('active'));
@@ -441,7 +440,6 @@
             });
         });
 
-        // Add process
         document.getElementById('addProcess').addEventListener('click', function() {
             processCount++;
             const container = document.getElementById('processContainer');
@@ -460,7 +458,6 @@
             container.appendChild(newRow);
         });
 
-        // Remove process
         document.getElementById('removeProcess').addEventListener('click', function() {
             const container = document.getElementById('processContainer');
             if (container.children.length > 1) {
@@ -469,7 +466,6 @@
             }
         });
 
-        // Simulate
         document.getElementById('simulate').addEventListener('click', function() {
             const processes = getProcesses();
             let result;
@@ -752,7 +748,6 @@
         function displayResults(simulation, processes) {
             const { gantt, result } = simulation;
             
-            // Display Gantt Chart
             const ganttChart = document.getElementById('ganttChart');
             ganttChart.innerHTML = '';
             
@@ -780,7 +775,6 @@
                 ganttChart.appendChild(div);
             });
 
-            // Calculate metrics
             const avgWait = result.reduce((sum, p) => sum + p.waiting, 0) / result.length;
             const avgTurnaround = result.reduce((sum, p) => sum + p.turnaround, 0) / result.length;
             const totalBurst = processes.reduce((sum, p) => sum + p.burst, 0);
@@ -791,7 +785,6 @@
             document.getElementById('avgTurnaround').textContent = avgTurnaround.toFixed(2);
             document.getElementById('cpuUtil').textContent = `${cpuUtil}%`;
 
-            // Display table
             const tableBody = document.getElementById('tableBody');
             tableBody.innerHTML = '';
             
